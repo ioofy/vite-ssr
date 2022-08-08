@@ -1,0 +1,92 @@
+{
+  "name": "vite-react-ssr",
+  "version": "1.0.0",
+  "description": "Boilerplate for a modern web stack react with ssr",
+  "repository": {
+    "type": "git"
+  },
+  "author": "Ioofy",
+  "license": "MIT",
+  "scripts": {
+    "dev:server": "nodemon --watch server.ts --watch src/server --exec 'ts-node server.ts'",
+    "dev:client": "yarn build:client && vite --config vite.config.ts dev",
+    "build": "rimraf dist && tsc -p tsconfig.prod.json && yarn build:client && yarn build:server && yarn copy-files",
+    "build:client": "vite build --outDir dist/client --ssrManifest",
+    "build:server": "vite build --ssr src/client/entry-server.tsx --outDir dist/server",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "coverage": "vitest --coverage",
+    "typecheck": "tsc --noEmit",
+    "serve": "yarn build && cross-env NODE_ENV=production yarn ts-node ./server",
+    "serve:local": "vite serve",
+    "clean": "rimraf dist/",
+    "copy-files": "copyfiles static/* dist/assets && copyfiles index.html dist && copyfiles -f dist/client/assets/* dist/assets",
+    "format": "prettier --write .",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.0.0",
+    "serve-static": "^1.15.0",
+    "ts-node": "^10.9.1",
+    "zod": "^3.17.10"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.3.0",
+    "@types/compression": "^1.7.2",
+    "@types/concurrently": "^6.4.0",
+    "@types/eslint": "^8.4.5",
+    "@types/express": "^4.17.13",
+    "@types/node": "^18.6.4",
+    "@types/react": "^18.0.16",
+    "@types/react-dom": "^18.0.6",
+    "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
+    "@vitejs/plugin-react": "^2.0.0",
+    "autoprefixer": "^10.4.8",
+    "commitizen": "^4.2.5",
+    "compression": "1.7.4",
+    "concurrently": "7.3.0",
+    "copyfiles": "^2.4.1",
+    "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.21.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^26.8",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.0",
+    "jsdom": "^20.0.0",
+    "lint-staged": "^11.2.6",
+    "postcss": "^8.4.16",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "tailwindcss": "^3.1.8",
+    "typescript": "^4.7.4",
+    "vite": "^3.0.4",
+    "vitest": "^0.21.0"
+  },
+  "lint-staged": {
+    "*.{css,less,scss,html,json,tsx,ts}": [
+      "prettier --write ."
+    ],
+    "*.ts": "eslint --fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
