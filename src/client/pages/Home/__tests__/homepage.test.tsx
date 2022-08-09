@@ -5,6 +5,8 @@ import { Footer } from "~/client/components/Footer";
 import useCounter from "~/hooks/useCounter";
 import { Homepage } from "../index.page";
 import { RenderWithClient } from "~/__tests__/Handlers";
+import { server } from "~/__tests__/setupTests";
+import { rest } from "msw";
 
 describe("demo", () => {
   test("should be testable", ({ expect }) => {
@@ -27,5 +29,17 @@ describe("demo", () => {
       result.current.increment();
     });
     expect(result.current.count).toBe(1);
+  });
+
+  test("if the user fetch fails, show the error message", async ({ expect }) => {
+    server.use(
+      rest.get("*", (req, res, ctx) => {
+        return res(ctx.status(500));
+      }),
+    );
+
+    const result = RenderWithClient(<Homepage />);
+
+    expect(await result.findByText(/Error/i)).toBeInTheDocument();
   });
 });

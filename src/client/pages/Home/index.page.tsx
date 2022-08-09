@@ -5,7 +5,7 @@ import { useFetchTodos } from "~/hooks/useFetch";
 
 export const Homepage = () => {
   const { name, setName } = useAppContext();
-  const { data } = useFetchTodos();
+  const { data, isLoading, isError } = useFetchTodos();
 
   return (
     <div className="flex bg-white-100 font-sans items-center flex-col justify-between h-screen">
@@ -20,8 +20,9 @@ export const Homepage = () => {
           className="focus:ring-indigo-500 focus:border-indigo-500 block w-full text-2xl border-gray-300 rounded-md bg-[#8080802e] p-2"
         />
         <div className="mt-4">
+          {isError && <p>Error</p>}
           <p className="text-center">Render API Data:</p>
-          {JSON.stringify(data)}
+          <span>{isLoading ? <p>Fetching your data..</p> : JSON.stringify(data)}</span>
         </div>
       </div>
       <Footer />

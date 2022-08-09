@@ -15,15 +15,6 @@ const queryClient = () =>
   });
 
 export const handlers = [
-  rest.get("*/users/*", (req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json({
-        name: "Leanne Graham",
-      }),
-    );
-  }),
-
   rest.get("*/todos/*", (req, res, ctx) => {
     return res(
       ctx.status(200),
