@@ -1,18 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useAppContext } from "~/client/context/AppContext";
 import { Footer } from "~/client/components/Footer";
-import axios from "axios";
+import { useFetchTodos } from "~/hooks/useFetch";
 
 export const Homepage = () => {
   const { name, setName } = useAppContext();
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const result = await axios.get("https://jsonplaceholder.typicode.com/todos/1");
-      setData(result.data);
-    })();
-  }, []);
+  const { data } = useFetchTodos();
 
   return (
     <div className="flex bg-white-100 font-sans items-center flex-col justify-between h-screen">
