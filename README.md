@@ -1,4 +1,4 @@
-# 💎 BukaToko
+# Vite React SSR
 
 [![Node CI](https://github.com/jonluca/vite-typescript-ssr-react/actions/workflows/nodejs.yml/badge.svg)](https://github.com/jonluca/vite-typescript-ssr-react/actions/workflows/nodejs.yml)
 
@@ -7,7 +7,7 @@ A _blazingly_ modern web development stack. This template repo tries to achieve 
 ## Introduction & Architecture
 
 - ⚡️ [React 18](https://beta.reactjs.org/)
-- 🫀 [Jest](https://jestjs.io/) - unitary testing made easy and with mocks
+- 🫀 [Vitest](https://vitest.dev/) - Blazingly fast unit test framework by vite
 - 🎨 [Tailwind with JIT](https://tailwindcss.com/) - next generation utility-first CSS
 - 🪢 [CSS Modules](https://github.com/css-modules/css-modules)
 - 👑 [Atomic Design organization](https://bradfrost.com/blog/post/atomic-web-design/)
@@ -37,7 +37,7 @@ src
 
 - **feat/{short-description}**: develop a features.
   `Base branch: main`
-- **bugfix/{short-description}**: develop a features.
+- **bugfix/{short-description}**: fix some bug or features.
   `Base branch: main`
 - **hotfix/{short-description}**: uses main as the base branch. to fix prod env
   `Base branch: main`
