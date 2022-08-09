@@ -1,19 +1,61 @@
-# Vite Typescript React 18 SSR
+# 💎 BukaToko
 
 [![Node CI](https://github.com/jonluca/vite-typescript-ssr-react/actions/workflows/nodejs.yml/badge.svg)](https://github.com/jonluca/vite-typescript-ssr-react/actions/workflows/nodejs.yml)
 
 A _blazingly_ modern web development stack. This template repo tries to achieve the minimum viable example for each of the following:
 
-![video](video.gif)
+## Introduction & Architecture
 
-- [React 18](https://reactjs.org/blog/2022/03/29/react-v18.html)
-- [Typescript 4.7](https://devblogs.microsoft.com/typescript/announcing-typescript-4-7/)
-- [Vite with Vite SSR](https://vitejs.dev/guide/ssr.html)
-- [GitHub Actions](https://github.com/features/actions)
-- [Tailwind CSS](https://tailwindui.com/)
-- [Prettier](https://prettier.io/) & [ESLint](https://eslint.org/)
+- ⚡️ [React 18](https://beta.reactjs.org/)
+- 🫀 [Jest](https://jestjs.io/) - unitary testing made easy and with mocks
+- 🎨 [Tailwind with JIT](https://tailwindcss.com/) - next generation utility-first CSS
+- 🪢 [CSS Modules](https://github.com/css-modules/css-modules)
+- 👑 [Atomic Design organization](https://bradfrost.com/blog/post/atomic-web-design/)
+- 🗂 [Absolute imports](https://github.com/vitejs/vite/issues/88#issuecomment-762415200)
+- 🐶 [Husky](https://github.com/typicode/husky) - Improve code quality with linting and code formatting
+- 💻 [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling
+- 📦 [Yarn](https://yarnpkg.com/) - A Good Package manager for JavaScript
+- 😺 [GitHub Actions](https://github.com/features/actions)
+- 🦾 TypeScript, of course
 
-## Development
+### **Folder Structure**
+
+```
+src
+├── constants => Common shared constants file
+├── components => Common shared reusabled global component
+├── hooks => Custom Hooks
+├── interfaces/types => Type/Interface typescript
+├── libs => Utilities
+├── pages => Routing of pages
+├── redux => Global state management
+├── service => Core service of module logic business
+└── styles => Global styles
+```
+
+### Workflow
+
+- **feat/{short-description}**: develop a features.
+  `Base branch: main`
+- **bugfix/{short-description}**: develop a features.
+  `Base branch: main`
+- **hotfix/{short-description}**: uses main as the base branch. to fix prod env
+  `Base branch: main`
+
+### Commit Name Format
+
+**Example**
+
+```
+feat: add search on manager tab
+^--^  ^---------------------^
+|     |
+|     +-> Summary in present tense.
+|
++-------> Type: chore, docs, feat, fix, refactor, style, or test.
+```
+
+### Development
 
 ```
 yarn
@@ -31,7 +73,7 @@ yarn dev:client
 
 To start the native vite client.
 
-## Building
+### Building
 
 ```
 yarn build
@@ -40,7 +82,7 @@ yarn serve
 
 yarn build will create the assets in `dist` - a `client` and `server` folder. Serve will run `dist/server.js` with Node, but feel free to change this to use Docker or some other process manager to suit your deployment needs.
 
-## Files
+### Files Reference
 
 `eslintrc.js` - a barebones eslint configuration for 2021, that extends off of the recommended ESLint config and prettier
 
@@ -58,6 +100,6 @@ yarn build will create the assets in `dist` - a `client` and `server` folder. Se
 
 `vite.config.ts` - Vite configuration
 
-## CI
+### CI
 
 We use GitHub actions to build the app. The badge is at the top of the repo. Currently it just confirms that everything builds properly.

@@ -6,6 +6,10 @@ import compression from "compression";
 import serveStatic from "serve-static";
 import { createServer as createViteServer } from "vite";
 
+// Reference:
+// https://vitejs.dev/guide/ssr.html
+// https://github.com/jonluca/vite-typescript-ssr-react/blob/master/server.ts
+
 const isTest = process.env.NODE_ENV === "test" || !!process.env.VITE_TEST_BUILD;
 const resolve = (paths: string) => path.resolve(process.cwd(), paths);
 
