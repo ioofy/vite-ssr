@@ -15,7 +15,7 @@ const FullApp = () => (
 );
 
 // @ts-ignore
-if (import.meta.hot) {
+if (import.meta.hot || container?.innerText) {
   const root = createRoot(container!); // createRoot(container!) if you use TypeScript
   root.render(<FullApp />);
 } else {

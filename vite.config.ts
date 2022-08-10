@@ -1,11 +1,18 @@
-/// <reference types="vitest" />
 import { defineConfig } from "vite";
 import { resolve } from "path";
 import react from "@vitejs/plugin-react";
 import EnvironmentPlugin from "vite-plugin-environment";
+import type { UserConfig } from "vitest/config";
 
 // https://vitejs.dev/config/
-// TODO: Fix some bug in production mode "Minified React Error" environment
+
+const test = {
+  globals: true,
+  environment: "jsdom",
+  setupFiles: ["src/__tests__/setupTests.ts"],
+  threads: false,
+  watch: false,
+} as UserConfig["test"];
 
 export default defineConfig({
   plugins: [react(), EnvironmentPlugin(["API_KEY"])],
@@ -19,11 +26,6 @@ export default defineConfig({
     },
   },
   root: "",
-  test: {
-    globals: true,
-    environment: "jsdom",
-    setupFiles: ["src/__tests__/setupTests.ts"],
-    threads: false,
-    watch: false,
-  },
+  // @ts-ignore
+  test,
 });
