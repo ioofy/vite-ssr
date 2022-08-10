@@ -8,15 +8,14 @@ const container = document.getElementById("app");
 
 const FullApp = () => (
   <React.StrictMode>
-    <BrowserRouter basename="/">
+    <BrowserRouter>
       <App />
     </BrowserRouter>
   </React.StrictMode>
 );
 
-// @ts-ignore
-if (import.meta.hot || container?.innerText) {
-  const root = createRoot(container!); // createRoot(container!) if you use TypeScript
+if (import.meta.hot || !container?.innerText) {
+  const root = createRoot(container!);
   root.render(<FullApp />);
 } else {
   hydrateRoot(container!, <FullApp />);
